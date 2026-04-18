@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type - Cyberpunk Edition</title>
+    <meta name="description" content="A cyberpunk-themed typing speed game featuring randomly generated sentences and real-time statistics.">
+    <!-- Google Fonts for Cyberpunk aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+
+    <main class="app-container">
+        <!-- Home Screen -->
+        <section id="home-screen" class="screen active">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="TYPE">TYPE</h1>
+                <div class="sub-glitch">SYSTEM_INITIALIZED v2.0</div>
+            </div>
+            
+            <div class="instructions">
+                <p>ACCESSING NEURAL NETWORK...</p>
+                <p>TEST YOUR UPLINK SPEED AND ACCURACY.</p>
+                <p>PRESS ESCAPE TO PAUSE CONNECTION.</p>
+            </div>
+            
+            <button id="jack-in-btn" class="cyber-btn">
+                <span class="btn-text">JACK IN</span>
+                <span class="btn-glitch"></span>
+            </button>
+        </section>
+
+        <!-- Game Screen -->
+        <section id="game-screen" class="screen hidden">
+            <header>
+                <div class="header-left">
+                    <h2 class="mini-logo">SYS.TYPE</h2>
+                    <button id="pause-btn" class="icon-btn" title="Pause Game (ESC)">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                    </button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">TIME_REMAINING</span>
+                        <span class="stat-value" id="time-display">60</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">WPM_LINK</span>
+                        <span class="stat-value" id="wpm-display">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">ACCURACY</span>
+                        <span class="stat-value" id="accuracy-display">100%</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="typing-area">
+                <div class="sentence-display" id="sentence-display">
+                    AWAITING UPLINK...
+                </div>
+                <input type="text" id="type-input" class="type-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled>
+            </div>
+        </section>
+
+        <!-- Pause Modal -->
+        <div id="pause-modal" class="modal hidden">
+            <div class="cyber-modal-content">
+                <h2 class="glitch-text" data-text="SYSTEM PAUSED">SYSTEM PAUSED</h2>
+                <p class="sys-msg">Uplink suspended. Connection stable.</p>
+                <div class="modal-actions">
+                    <button id="resume-btn" class="cyber-btn">
+                        <span class="btn-text">RESUME</span>
+                    </button>
+                    <button id="quit-btn" class="cyber-btn danger-btn">
+                        <span class="btn-text">DISCONNECT</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Modal -->
+        <div id="results-modal" class="modal hidden">
+            <div class="cyber-modal-content">
+                <h2 class="glitch-text" data-text="UPLINK COMPLETE">UPLINK COMPLETE</h2>
+                <div class="final-stats">
+                    <div class="final-stat">
+                        <span class="fs-label">FINAL_WPM</span>
+                        <span class="fs-value" id="final-wpm">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="fs-label">ACCURACY</span>
+                        <span class="fs-value" id="final-accuracy">100%</span>
+                    </div>
+                </div>
+                <p id="feedback-message" class="feedback-message"></p>
+                <div class="modal-actions">
+                    <button id="restart-btn" class="cyber-btn">
+                        <span class="btn-text">RECONNECT</span>
+                    </button>
+                    <button id="home-btn" class="cyber-btn secondary-btn">
+                        <span class="btn-text">MAIN MENU</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
